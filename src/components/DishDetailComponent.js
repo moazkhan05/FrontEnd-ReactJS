@@ -127,7 +127,7 @@ import {Control, LocalForm, Errors} from "react-redux-form";
           return (
              <div>
                 <Button outline onClick={this.toggleCommentModal}>
-                    <span className="fa fa-edit fa-lg"></span> Submit Comment
+                    <span className="fa fa-pencil fa-lg"></span> Submit Comment
                 </Button>
 
                 <Modal isOpen={this.state.isCommentModalOpen} toggle={this.toggleCommentModal}>
