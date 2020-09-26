@@ -7,45 +7,9 @@ class Contact extends Component {
 
     constructor (props){
         super (props);
-        /*this.state={
-            firstname: '',
-            lastname: '',
-            telnum: '',
-            email: '',
-            agree: false,
-            contactType: 'Tel.',
-            message: '',
-            touched: {
-                firstname: false,
-                lastname: false,
-                telnum: false,
-                email: false
-            } 
-        }; the state is  managed by react-redux form   
-        */
-        //this.handleInputChange = this.handleInputChange.bind(this);
-        //this.handleBlur = this.handleBlur.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    
-/* both functions will now handle by react redux form    
-    handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
 
-        this.setState({
-            [name]: value
-        });
-    }
-    
-    indicates which field is modified 
-     handleBlur = (field) => (evt) => {
-        this.setState({
-            touched: { ...this.state.touched, [field]: true }
-        });
-    }
-*/
     //button click
     handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
@@ -54,56 +18,10 @@ class Contact extends Component {
     }
 
 
-    //validation function  handled by react redux 
-/*    validate(firstname, lastname, telnum, email) {
-        const errors = {
-            firstname: '',
-            lastname: '',
-            telnum: '',
-            email: ''
-        };
-
-        if (this.state.touched.firstname && firstname.length < 3)
-            errors.firstname = 'First Name should be >= 3 characters';
-        else if (this.state.touched.firstname && firstname.length > 10)
-            errors.firstname = 'First Name should be <= 10 characters';
-
-        if (this.state.touched.lastname && lastname.length < 3)
-            errors.lastname = 'Last Name should be >= 3 characters';
-        else if (this.state.touched.lastname && lastname.length > 10)
-            errors.lastname = 'Last Name should be <= 10 characters';
-
-        const reg = /^\d+$/;  
-        /* /^(^\+923[0-9]{9}$) | (^\03[0-9]{9}$)/; 
-            this expression checks number start with 0 aor +92 followed by 3
-            followed by 9 digits 
-            pakistan mobile number and this regex won't accept 0092
-        */
-        // if (this.state.touched.telnum && !reg.test(telnum))
-        //     errors.telnum = 'Tel. Number should contain only numbers';
-
-        // if(this.state.touched.email && email.split('').filter(x => x === '@').length !== 1)
-        //     errors.email = 'Email should contain a @';
-
-        /*const emailReg= /^[a-zA-Z0-9]+@[a-zA-Z0-9-]+(?:\.+)*$/ ;
-        if(this.state.touched.email && !emailReg.test(email)){
-            const invalidChar = '.!#$%&,*+/=?^_`{|}~-'
-            errors.email = 'Invalid Email \n Email should not contain '+invalidChar ;
-
-        } */    
-
-           //return errors;
-           
- //   }
     
     render(){
 
-        //invoking errors 
-        // const errors =  this.validate(this.state.firstname, 
-        //                               this.state.lastname, 
-        //                               this.state.telnum, 
-        //                               this.state.email);
-
+       
         return(
         <div className="container">
              <div className="row">
