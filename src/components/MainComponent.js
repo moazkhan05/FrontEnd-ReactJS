@@ -6,6 +6,7 @@ import Menu from './MenuComponent';
 import DishDetail from './DishDetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import About from './AboutComponent';
 
 //components end
 //shared files
@@ -64,7 +65,7 @@ class Main extends Component {
                <Route path='/home' component={HomePage} />
           <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
           <Route path='/menu/:dishId' component={DishWithId} />
-          {/* <Route path='/aboutus' component={() => <About leader= {this.state.leaders}></About>} /> */}
+          <Route path='/aboutus' component={() => <About leader= {this.state.leaders}></About>} />
           <Route exact path='/contactus' component={Contact} />
           <Redirect to="/home" />
             </Switch>
