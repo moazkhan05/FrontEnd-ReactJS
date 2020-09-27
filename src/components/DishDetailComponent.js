@@ -22,7 +22,7 @@ import { baseUrl } from '../shared/baseUrl';
             )
         }
 
-  function RenderComments({comments, addComment, dishId}) {
+  function RenderComments({comments, postComment, dishId}) {
         // console.log(comments)
         if (comments != null) {
 
@@ -49,7 +49,7 @@ import { baseUrl } from '../shared/baseUrl';
                         {/* adding comment modal */}
                         <CommentForm 
                               dishId={dishId} 
-                              addComment={addComment} 
+                              postComment={postComment} 
 
                           />
                     </div>
@@ -101,7 +101,7 @@ import { baseUrl } from '../shared/baseUrl';
                     <div className="row">
                             <RenderDish dish={props.dish} />
                             <RenderComments comments={props.comments}
-                                addComment={props.addComment}
+                                postComment={props.postComment}
                                 dishId={props.dish.id}
                               />
                             
@@ -142,7 +142,7 @@ import { baseUrl } from '../shared/baseUrl';
         //handleSubmit Function
         handleSubmit(values) {
           this.toggleCommentModal();
-          this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+          this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
           alert( values.rating + " " + values.author + " " +  
                     values.comment + this.props.dishId);
           
