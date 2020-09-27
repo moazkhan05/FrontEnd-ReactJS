@@ -21,7 +21,7 @@ import {Control, LocalForm, Errors} from "react-redux-form";
             )
         }
 
-    function RenderComments({comments }){
+  function RenderComments({comments, addComment, dishId}) {
         // console.log(comments)
         if (comments != null) {
 
@@ -46,7 +46,11 @@ import {Control, LocalForm, Errors} from "react-redux-form";
                             {list}
                         </ul>
                         {/* adding comment modal */}
-                        <CommentForm />
+                        <CommentForm 
+                              dishId={dishId} 
+                              addComment={addComment} 
+
+                          />
                     </div>
             )
         }
@@ -76,7 +80,10 @@ import {Control, LocalForm, Errors} from "react-redux-form";
                     </div>
                     <div className="row">
                             <RenderDish dish={props.dish} />
-                            <RenderComments comments={props.comments} />
+                            <RenderComments comments={props.comments}
+                                addComment={props.addComment}
+                                dishId={props.dish.id}
+                              />
                             
                     </div>
                 </div>
@@ -113,14 +120,12 @@ import {Control, LocalForm, Errors} from "react-redux-form";
         }
 
         //handleSubmit Function
-        // handleSubmit(values){
-        //   this.toggleCommentModal();
-        //   this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
-        // }
         handleSubmit(values) {
-          console.log('Current State is: ' + JSON.stringify(values));
-          alert('Current State is: ' + JSON.stringify(values));
           this.toggleCommentModal();
+          this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+          alert( values.rating + " " + values.author + " " +  
+                    values.comment + this.props.dishId);
+          
         }
 
         render(){
@@ -137,12 +142,14 @@ import {Control, LocalForm, Errors} from "react-redux-form";
                             <Row className="form-group">
                                 <Label for="rating" md={12}>rating</Label>
                                 <Col md={12}>
-                                    <Control.select model=".rating" name="rating" className="form-control">
-                                        <option value='1'>1</option>
-										                    <option value='2'>2</option>
-										                    <option value='3'>3</option>
-										                    <option value='4'>4</option>
-										                    <option value='5'>5</option>
+                                    <Control.select model=".rating" name="rating" 
+                                      id="rating"
+                                      className="form-control">
+                                        <option values='1'>1</option>
+										                    <option values='2'>2</option>
+										                    <option values='3'>3</option>
+										                    <option values='4'>4</option>
+										                    <option values='5'>5</option>
                                     </Control.select>
                                 </Col>
                             </Row>
@@ -160,7 +167,7 @@ import {Control, LocalForm, Errors} from "react-redux-form";
                                 />
                                 <Errors className="text-danger" model=".author" show="touched"
                                     messages={{
-                                        required: 'Required',
+                                        required: 'Required\n',
                                         minLength: 'Should have more than 3 Characters',
                                         maxLength: 'Should have 15 or less Characters'
                                     }}
